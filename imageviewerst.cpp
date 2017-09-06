@@ -106,6 +106,7 @@ void ImageViewerST::rotateImage(int degrees)
     QMatrix rm;
     rm.rotate(degrees);
     pixmap = pixmap.transformed(rm);
+    image = pixmap.toImage();
     imageLabel->setPixmap(pixmap);
     scaleImage(1);
 }
