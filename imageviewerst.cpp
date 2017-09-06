@@ -42,9 +42,10 @@ void ImageViewerST::adjustScrollBar(QScrollBar *scrollBar, double factor)
 
 void ImageViewerST::on_actionOpen_triggered()
 {
-        QString fileName = QFileDialog::getOpenFileName(this,
-                                                        tr("Open File"),
-                                                        QDir::currentPath());
+        QString lastFileName = fileName.isEmpty() ? QDir::currentPath() : fileName;
+        fileName = QFileDialog::getOpenFileName(this,
+                                                     tr("Open File"),
+                                                     lastFileName);
         if (!fileName.isEmpty()) {
              QImage image(fileName);
              if (image.isNull()) {

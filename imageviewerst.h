@@ -31,6 +31,7 @@ private:
     Ui::ImageViewerST *ui;
     QLabel *imageLabel;
     QScrollArea *scrollArea;
+    QString fileName;
 
     QAction *actionOpen;
     QAction *actionZoomIn;
