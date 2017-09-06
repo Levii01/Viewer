@@ -20,6 +20,7 @@ ImageViewerST::ImageViewerST(QWidget *parent) :
     setMouseTracking(true);
 
     imageLabel = new QLabel;
+    imageLabel->resize(0, 0);
     imageLabel->setMouseTracking(true);
     imageLabel->setBackgroundRole(QPalette::Base);
     imageLabel->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
