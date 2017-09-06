@@ -32,6 +32,14 @@ ImageViewerST::~ImageViewerST()
     delete ui;
 }
 
+
+void ImageViewerST::adjustScrollBar(QScrollBar *scrollBar, double factor)
+{
+    int newValue = factor * scrollBar->value() + (factor - 1) * scrollBar->pageStep() / 2;
+    scrollBar->setValue(newValue);
+}
+
+
 void ImageViewerST::on_actionOpen_triggered()
 {
         QString fileName = QFileDialog::getOpenFileName(this,
@@ -61,6 +69,9 @@ void ImageViewerST::scaleImage(double factor)
     Q_ASSERT(imageLabel->pixmap());
     scaleFactor *= factor;
     imageLabel->resize(scaleFactor * imageLabel->pixmap()->size());
+
+    adjustScrollBar(scrollArea->horizontalScrollBar(), factor);
+    adjustScrollBar(scrollArea->verticalScrollBar(), factor);
 
     actionZoomIn->setEnabled(scaleFactor < 3.0);
     actionZoomOut->setEnabled(scaleFactor > 0.333);
