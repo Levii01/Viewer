@@ -9,6 +9,7 @@
 #include <QMessageBox>
 #include <QDebug>
 #include <QScrollBar>
+#include <QMouseEvent>
 
 namespace Ui {
 class ImageViewerST;
@@ -28,6 +29,8 @@ private slots:
     void on_actionZoomOut_triggered();
     void on_actionRotateLeft_triggered();
     void on_actionRotateRight_triggered();
+    void on_actionCrop_triggered();
+    bool eventFilter(QObject* watched, QEvent* event);
 
 private:
     Ui::ImageViewerST *ui;
@@ -43,6 +46,9 @@ private:
     QAction *actionCrop;
 
     double scaleFactor;
+    bool croppingImage;
+    QPoint croppingStart;
+    QPoint croppingEnd;
 
     void scaleImage(double factor);
     void toggleActivityActions(bool updateTo);

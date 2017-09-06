@@ -20,6 +20,7 @@ ImageViewerST::ImageViewerST(QWidget *parent) :
     imageLabel->setBackgroundRole(QPalette::Base);
     imageLabel->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
     imageLabel->setScaledContents(true); // full view
+    imageLabel->installEventFilter(this);
 
     scrollArea = new QScrollArea;
     scrollArea->setBackgroundRole(QPalette::Dark);
@@ -68,6 +69,7 @@ void ImageViewerST::on_actionOpen_triggered()
              }
              imageLabel->setPixmap(QPixmap::fromImage(image));
              scaleFactor = 1.0;
+             croppingImage = false;
 
              toggleActivityActions(true);
 
@@ -116,4 +118,45 @@ void ImageViewerST::on_actionRotateLeft_triggered()
 void ImageViewerST::on_actionRotateRight_triggered()
 {
     rotateImage(90);
+}
+
+void ImageViewerST::on_actionCrop_triggered()
+{
+    croppingImage = true;
+}
+
+
+bool ImageViewerST::eventFilter(QObject* watched, QEvent* event)
+{
+    if (watched != imageLabel || !croppingImage)
+        return false;
+
+    switch (event->type())
+    {
+        case QEvent::MouseButtonPress:
+        {
+            const QMouseEvent* const me = static_cast<const QMouseEvent*>(event);
+            croppingStart = me->pos() / scaleFactor;
+            break;
+        }
+
+        case QEvent::MouseButtonRelease:
+        {
+            const QMouseEvent* const me = static_cast<const QMouseEvent*>(event);
+            croppingEnd = me->pos() / scaleFactor;
+
+            QRect rect(croppingStart, croppingEnd);
+            QImage original(fileName);
+            QImage cropped = original.copy(rect);
+            imageLabel->setPixmap(QPixmap::fromImage(cropped));
+            imageLabel->adjustSize();
+            scaleImage(1.0);
+            break;
+        }
+
+        default:
+            break;
+    }
+
+    return false;
 }
