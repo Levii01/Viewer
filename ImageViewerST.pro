@@ -22,3 +22,6 @@ HEADERS += \
 
 FORMS += \
         imageviewerst.ui
+
+RESOURCES += \
+    icons.qrc
