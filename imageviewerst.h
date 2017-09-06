@@ -46,6 +46,7 @@ private:
     void scaleImage(double factor);
     void toggleActivityActions(bool updateTo);
     void adjustScrollBar(QScrollBar *scrollBar, double factor);
+    void rotateImage(int degrees);
 };
 
 #endif // IMAGEVIEWERST_H

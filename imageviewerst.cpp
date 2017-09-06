@@ -96,22 +96,22 @@ void ImageViewerST::on_actionZoomOut_triggered()
     scaleImage(0.8);
 }
 
-void ImageViewerST::on_actionRotateLeft_triggered()
+void ImageViewerST::rotateImage(int degrees)
 {
     QPixmap pixmap(*imageLabel->pixmap());
     QMatrix rm;
-    rm.rotate(-90);
+    rm.rotate(degrees);
     pixmap = pixmap.transformed(rm);
     imageLabel->setPixmap(pixmap);
     scaleImage(1);
 }
 
+void ImageViewerST::on_actionRotateLeft_triggered()
+{
+    rotateImage(-90);
+}
+
 void ImageViewerST::on_actionRotateRight_triggered()
 {
-    QPixmap pixmap(*imageLabel->pixmap());
-    QMatrix rm;
-    rm.rotate(90);
-    pixmap = pixmap.transformed(rm);
-    imageLabel->setPixmap(pixmap);
-    scaleImage(1);
+    rotateImage(90);
 }
