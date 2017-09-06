@@ -12,6 +12,7 @@ ImageViewerST::ImageViewerST(QWidget *parent) :
     actionZoomOut = ui->actionZoomOut;
     actionRotateLeft = ui->actionRotateLeft;
     actionRotateRight = ui->actionRotateRight;
+    actionCrop = ui->actionCrop;
 
     toggleActivityActions(false);
 
@@ -39,6 +40,7 @@ void ImageViewerST::toggleActivityActions(bool updateTo)
     actionZoomOut->setEnabled(updateTo);
     actionRotateLeft->setEnabled(updateTo);
     actionRotateRight->setEnabled(updateTo);
+    actionCrop->setEnabled(updateTo);
 }
 
 

@@ -40,6 +40,7 @@ private:
     QAction *actionZoomOut;
     QAction *actionRotateLeft;
     QAction *actionRotateRight;
+    QAction *actionCrop;
 
     double scaleFactor;
 
