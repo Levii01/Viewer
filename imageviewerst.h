@@ -55,6 +55,7 @@ private:
     void toggleActivityActions(bool updateTo);
     void adjustScrollBar(QScrollBar *scrollBar, double factor);
     void rotateImage(int degrees);
+    void changeCroppingImage(bool changeTo);
 };
 
 #endif // IMAGEVIEWERST_H
