@@ -23,12 +23,21 @@ public:
 
 private slots:
     void on_actionOpen_triggered();
+    void on_actionZoomIn_triggered();
+    void on_actionZoomOut_triggered();
 
 private:
     Ui::ImageViewerST *ui;
     QLabel *imageLabel;
     QScrollArea *scrollArea;
+
     QAction *actionOpen;
+    QAction *actionZoomIn;
+    QAction *actionZoomOut;
+
+    double scaleFactor;
+
+    void scaleImage(double factor);
 };
 
 #endif // IMAGEVIEWERST_H
