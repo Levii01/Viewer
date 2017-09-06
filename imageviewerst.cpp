@@ -59,7 +59,7 @@ void ImageViewerST::on_actionOpen_triggered()
                                                      tr("Open File"),
                                                      lastFileName);
         if (!fileName.isEmpty()) {
-             QImage image(fileName);
+             image = QImage(fileName);
              if (image.isNull()) {
                  QMessageBox::information(this,
                                           tr("Image Viewer"),
@@ -146,11 +146,12 @@ bool ImageViewerST::eventFilter(QObject* watched, QEvent* event)
             croppingEnd = me->pos() / scaleFactor;
 
             QRect rect(croppingStart, croppingEnd);
-            QImage original(fileName);
-            QImage cropped = original.copy(rect);
-            imageLabel->setPixmap(QPixmap::fromImage(cropped));
+            image = image.copy(rect);
+            imageLabel->setPixmap(QPixmap::fromImage(image));
             imageLabel->adjustSize();
             scaleImage(1.0);
+
+            croppingImage = false;
             break;
         }
 
