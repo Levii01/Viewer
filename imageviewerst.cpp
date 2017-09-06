@@ -17,7 +17,7 @@ ImageViewerST::ImageViewerST(QWidget *parent) :
     statusBar = ui->statusBar;
 
     toggleActivityActions(false);
-    setMouseTracking(true);
+
 
     imageLabel = new QLabel;
     imageLabel->resize(0, 0);
@@ -28,7 +28,6 @@ ImageViewerST::ImageViewerST(QWidget *parent) :
     imageLabel->installEventFilter(this);
 
     scrollArea = new QScrollArea;
-    scrollArea->setMouseTracking(true);
     scrollArea->setBackgroundRole(QPalette::Dark);
     scrollArea->setWidget(imageLabel);
     setCentralWidget(scrollArea);
@@ -116,7 +115,7 @@ void ImageViewerST::rotateImage(int degrees)
     pixmap = pixmap.transformed(rm);
     image = pixmap.toImage();
     imageLabel->setPixmap(pixmap);
-    scaleImage(1);
+    imageLabel->adjustSize();
 }
 
 void ImageViewerST::on_actionRotateLeft_triggered()
