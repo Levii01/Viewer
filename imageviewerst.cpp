@@ -6,6 +6,9 @@ ImageViewerST::ImageViewerST(QWidget *parent) :
     ui(new Ui::ImageViewerST)
 {
     ui->setupUi(this);
+
+    QImage image("/Users/emsi/Desktop/image.png");
+    ui->imageLabel->setPixmap(QPixmap::fromImage(image));
 }
 
 ImageViewerST::~ImageViewerST()
