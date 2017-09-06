@@ -9,14 +9,13 @@ ImageViewerST::ImageViewerST(QWidget *parent) :
 
     actionOpen = ui->actionOpen;
 
-    ui->imageLabel->setBackgroundRole(QPalette::Base);
-    ui->imageLabel->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
-    ui->imageLabel->setScaledContents(true); // full view
+    imageLabel = ui->imageLabel;
+    imageLabel->setBackgroundRole(QPalette::Base);
+    imageLabel->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
+    imageLabel->setScaledContents(true); // full view
 
-    ui->scrollArea->setBackgroundRole(QPalette::Dark);
-
-    QImage image("/Users/emsi/Desktop/image.png");
-    ui->imageLabel->setPixmap(QPixmap::fromImage(image));
+    scrollArea = ui->scrollArea;
+    scrollArea->setBackgroundRole(QPalette::Dark);
 
     setWindowTitle(tr("Image Viewer Project"));
 }
@@ -41,6 +40,6 @@ void ImageViewerST::on_actionOpen_triggered()
 
                  return;
              }
-             ui->imageLabel->setPixmap(QPixmap::fromImage(image));
+             imageLabel->setPixmap(QPixmap::fromImage(image));
         }
 }
