@@ -4,6 +4,10 @@
 #include <QMainWindow>
 #include <qlabel>
 #include <qscrollarea>
+#include <QFileDialog>
+#include <QDir>
+#include <QMessageBox>
+#include <QDebug>
 
 namespace Ui {
 class ImageViewerST;
@@ -17,10 +21,14 @@ public:
     explicit ImageViewerST(QWidget *parent = 0);
     ~ImageViewerST();
 
+private slots:
+    void on_actionOpen_triggered();
+
 private:
     Ui::ImageViewerST *ui;
     QLabel *imageLabel;
     QScrollArea *scrollArea;
+    QAction *actionOpen;
 };
 
 #endif // IMAGEVIEWERST_H
