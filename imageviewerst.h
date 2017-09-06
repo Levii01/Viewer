@@ -25,6 +25,7 @@ public:
     ~ImageViewerST();
 
 private slots:
+    bool eventFilter(QObject* watched, QEvent* event);
     void on_actionOpen_triggered();
     void on_actionZoomIn_triggered();
     void on_actionZoomOut_triggered();
@@ -33,17 +34,23 @@ private slots:
     void on_actionCrop_triggered();
     void on_actionSave_triggered();
     void on_actionShowToolbar_triggered(bool checked);
-    bool eventFilter(QObject* watched, QEvent* event);
 
 private:
     Ui::ImageViewerST *ui;
-    QLabel *imageLabel;
-    QScrollArea *scrollArea;
-    QString fileName;
-    QImage image;
+    
     QPoint croppingStart;
     QPoint croppingEnd;
+
+    QLabel *imageLabel;
+
+    QScrollArea *scrollArea;
+
+    QString fileName;
+
+    QImage image;
+
     QStatusBar *statusBar;
+
     QToolBar *mainToolBar;
 
     QAction *actionOpen;

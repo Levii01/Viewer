@@ -7,14 +7,15 @@ ImageViewerST::ImageViewerST(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    actionCrop = ui->actionCrop;
+    actionSave = ui->actionSave;
     actionOpen = ui->actionOpen;
     actionZoomIn = ui->actionZoomIn;
     actionZoomOut = ui->actionZoomOut;
     actionRotateLeft = ui->actionRotateLeft;
     actionRotateRight = ui->actionRotateRight;
-    actionCrop = ui->actionCrop;
-    actionSave = ui->actionSave;
     actionShowToolbar = ui->actionShowToolbar;
+
     statusBar = ui->statusBar;
     mainToolBar = ui->mainToolBar;
 
@@ -42,6 +43,14 @@ ImageViewerST::~ImageViewerST()
     delete ui;
 }
 
+//functions
+
+void ImageViewerST::adjustScrollBar(QScrollBar *scrollBar, double factor)
+{
+  int newValue = factor * scrollBar->value() + (factor - 1) * scrollBar->pageStep() / 2;
+  scrollBar->setValue(newValue);
+}
+
 void ImageViewerST::toggleActivityActions(bool updateTo)
 {
     actionZoomIn->setEnabled(updateTo);
@@ -52,13 +61,18 @@ void ImageViewerST::toggleActivityActions(bool updateTo)
     actionSave->setEnabled(updateTo);
 }
 
-
-void ImageViewerST::adjustScrollBar(QScrollBar *scrollBar, double factor)
+void ImageViewerST::scaleImage(double factor)
 {
-    int newValue = factor * scrollBar->value() + (factor - 1) * scrollBar->pageStep() / 2;
-    scrollBar->setValue(newValue);
-}
+    Q_ASSERT(imageLabel->pixmap());
+    scaleFactor *= factor;
+    imageLabel->resize(scaleFactor * imageLabel->pixmap()->size());
 
+    adjustScrollBar(scrollArea->horizontalScrollBar(), factor);
+    adjustScrollBar(scrollArea->verticalScrollBar(), factor);
+
+    actionZoomIn->setEnabled(scaleFactor < 3.0);
+    actionZoomOut->setEnabled(scaleFactor > 0.333);
+}
 
 void ImageViewerST::on_actionOpen_triggered()
 {
@@ -86,29 +100,6 @@ void ImageViewerST::on_actionOpen_triggered()
         }
 }
 
-void ImageViewerST::scaleImage(double factor)
-{
-    Q_ASSERT(imageLabel->pixmap());
-    scaleFactor *= factor;
-    imageLabel->resize(scaleFactor * imageLabel->pixmap()->size());
-
-    adjustScrollBar(scrollArea->horizontalScrollBar(), factor);
-    adjustScrollBar(scrollArea->verticalScrollBar(), factor);
-
-    actionZoomIn->setEnabled(scaleFactor < 3.0);
-    actionZoomOut->setEnabled(scaleFactor > 0.333);
-}
-
-void ImageViewerST::on_actionZoomIn_triggered()
-{
-    scaleImage(1.25);
-}
-
-void ImageViewerST::on_actionZoomOut_triggered()
-{
-    scaleImage(0.8);
-}
-
 void ImageViewerST::rotateImage(int degrees)
 {
     QPixmap pixmap(*imageLabel->pixmap());
@@ -118,21 +109,6 @@ void ImageViewerST::rotateImage(int degrees)
     image = pixmap.toImage();
     imageLabel->setPixmap(pixmap);
     imageLabel->adjustSize();
-}
-
-void ImageViewerST::on_actionRotateLeft_triggered()
-{
-    rotateImage(-90);
-}
-
-void ImageViewerST::on_actionRotateRight_triggered()
-{
-    rotateImage(90);
-}
-
-void ImageViewerST::on_actionCrop_triggered()
-{
-    changeCroppingImage(true);
 }
 
 void ImageViewerST::changeCroppingImage(bool changeTo)
@@ -194,6 +170,33 @@ bool ImageViewerST::eventFilter(QObject* watched, QEvent* event)
     }
 
     return false;
+}
+
+//slots
+
+void ImageViewerST::on_actionZoomIn_triggered()
+{
+    scaleImage(1.25);
+}
+
+void ImageViewerST::on_actionZoomOut_triggered()
+{
+    scaleImage(0.8);
+}
+
+void ImageViewerST::on_actionRotateLeft_triggered()
+{
+    rotateImage(-90);
+}
+
+void ImageViewerST::on_actionRotateRight_triggered()
+{
+    rotateImage(90);
+}
+
+void ImageViewerST::on_actionCrop_triggered()
+{
+    changeCroppingImage(true);
 }
 
 void ImageViewerST::on_actionSave_triggered()
