@@ -26,6 +26,8 @@ private slots:
     void on_actionOpen_triggered();
     void on_actionZoomIn_triggered();
     void on_actionZoomOut_triggered();
+    void on_actionRotateLeft_triggered();
+    void on_actionRotateRight_triggered();
 
 private:
     Ui::ImageViewerST *ui;
@@ -42,6 +44,7 @@ private:
     double scaleFactor;
 
     void scaleImage(double factor);
+    void toggleActivityActions(bool updateTo);
     void adjustScrollBar(QScrollBar *scrollBar, double factor);
 };
 

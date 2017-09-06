@@ -13,10 +13,7 @@ ImageViewerST::ImageViewerST(QWidget *parent) :
     actionRotateLeft = ui->actionRotateLeft;
     actionRotateRight = ui->actionRotateRight;
 
-    actionZoomIn->setEnabled(false);
-    actionZoomOut->setEnabled(false);
-    actionRotateLeft->setEnabled(false);
-    actionRotateRight->setEnabled(false);
+    toggleActivityActions(false);
 
     imageLabel = new QLabel;
     imageLabel->setBackgroundRole(QPalette::Base);
@@ -34,6 +31,14 @@ ImageViewerST::ImageViewerST(QWidget *parent) :
 ImageViewerST::~ImageViewerST()
 {
     delete ui;
+}
+
+void ImageViewerST::toggleActivityActions(bool updateTo)
+{
+    actionZoomIn->setEnabled(updateTo);
+    actionZoomOut->setEnabled(updateTo);
+    actionRotateLeft->setEnabled(updateTo);
+    actionRotateRight->setEnabled(updateTo);
 }
 
 
@@ -62,10 +67,7 @@ void ImageViewerST::on_actionOpen_triggered()
              imageLabel->setPixmap(QPixmap::fromImage(image));
              scaleFactor = 1.0;
 
-             actionZoomIn->setEnabled(true);
-             actionZoomOut->setEnabled(true);
-             actionRotateLeft->setEnabled(true);
-             actionRotateRight->setEnabled(true);
+             toggleActivityActions(true);
 
              imageLabel->adjustSize();
         }
@@ -92,4 +94,24 @@ void ImageViewerST::on_actionZoomIn_triggered()
 void ImageViewerST::on_actionZoomOut_triggered()
 {
     scaleImage(0.8);
+}
+
+void ImageViewerST::on_actionRotateLeft_triggered()
+{
+    QPixmap pixmap(*imageLabel->pixmap());
+    QMatrix rm;
+    rm.rotate(-90);
+    pixmap = pixmap.transformed(rm);
+    imageLabel->setPixmap(pixmap);
+    scaleImage(1);
+}
+
+void ImageViewerST::on_actionRotateRight_triggered()
+{
+    QPixmap pixmap(*imageLabel->pixmap());
+    QMatrix rm;
+    rm.rotate(90);
+    pixmap = pixmap.transformed(rm);
+    imageLabel->setPixmap(pixmap);
+    scaleImage(1);
 }
