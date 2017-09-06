@@ -10,9 +10,13 @@ ImageViewerST::ImageViewerST(QWidget *parent) :
     actionOpen = ui->actionOpen;
     actionZoomIn = ui->actionZoomIn;
     actionZoomOut = ui->actionZoomOut;
+    actionRotateLeft = ui->actionRotateLeft;
+    actionRotateRight = ui->actionRotateRight;
 
     actionZoomIn->setEnabled(false);
     actionZoomOut->setEnabled(false);
+    actionRotateLeft->setEnabled(false);
+    actionRotateRight->setEnabled(false);
 
     imageLabel = new QLabel;
     imageLabel->setBackgroundRole(QPalette::Base);
@@ -60,6 +64,8 @@ void ImageViewerST::on_actionOpen_triggered()
 
              actionZoomIn->setEnabled(true);
              actionZoomOut->setEnabled(true);
+             actionRotateLeft->setEnabled(true);
+             actionRotateRight->setEnabled(true);
 
              imageLabel->adjustSize();
         }

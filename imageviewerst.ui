@@ -59,6 +59,8 @@
    <addaction name="actionOpen"/>
    <addaction name="actionZoomIn"/>
    <addaction name="actionZoomOut"/>
+   <addaction name="actionRotateLeft"/>
+   <addaction name="actionRotateRight"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionOpen">
@@ -95,6 +97,33 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+-</string>
+   </property>
+  </action>
+  <action name="actionRotateLeft">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/new/prefix1/icons/rotate-left.png</normaloff>:/new/prefix1/icons/rotate-left.png</iconset>
+   </property>
+   <property name="text">
+    <string>RotateLeft</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+&lt;</string>
+   </property>
+  </action>
+  <action name="actionRotateRight">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/new/prefix1/icons/rotate-right.png</normaloff>:/new/prefix1/icons/rotate-right.png</iconset>
+   </property>
+   <property name="text">
+    <string>RotateRight</string>
+   </property>
+   <property name="toolTip">
+    <string>Rotate Right</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+&gt;</string>
    </property>
   </action>
  </widget>
