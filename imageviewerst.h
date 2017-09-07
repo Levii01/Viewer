@@ -35,9 +35,11 @@ private slots:
     void on_actionSave_triggered();
     void on_actionShowToolbar_triggered(bool checked);
 
+    void on_actionScale_triggered();
+
 private:
     Ui::ImageViewerST *ui;
-    
+
     QPoint croppingStart;
     QPoint croppingEnd;
 
@@ -61,6 +63,7 @@ private:
     QAction *actionCrop;
     QAction *actionSave;
     QAction *actionShowToolbar;
+    QAction *actionScale;
 
     double scaleFactor;
     bool croppingImage;

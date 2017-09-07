@@ -51,6 +51,7 @@
     <addaction name="actionRotateRight"/>
     <addaction name="separator"/>
     <addaction name="actionCrop"/>
+    <addaction name="actionScale"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuView"/>
@@ -70,6 +71,7 @@
    <addaction name="actionRotateLeft"/>
    <addaction name="actionRotateRight"/>
    <addaction name="actionCrop"/>
+   <addaction name="actionScale"/>
   </widget>
   <widget class="QStatusBar" name="statusBar">
    <property name="enabled">
@@ -175,6 +177,18 @@
    </property>
    <property name="text">
     <string>Show Toolbar</string>
+   </property>
+  </action>
+  <action name="actionScale">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/new/prefix1/icons/resize.png</normaloff>:/new/prefix1/icons/resize.png</iconset>
+   </property>
+   <property name="text">
+    <string>Scale</string>
+   </property>
+   <property name="toolTip">
+    <string>Scale Image</string>
    </property>
   </action>
  </widget>

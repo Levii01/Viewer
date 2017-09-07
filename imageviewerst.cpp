@@ -15,6 +15,7 @@ ImageViewerST::ImageViewerST(QWidget *parent) :
     actionRotateLeft = ui->actionRotateLeft;
     actionRotateRight = ui->actionRotateRight;
     actionShowToolbar = ui->actionShowToolbar;
+    actionScale = ui->actionScale;
 
     statusBar = ui->statusBar;
     mainToolBar = ui->mainToolBar;
@@ -59,6 +60,7 @@ void ImageViewerST::toggleActivityActions(bool updateTo)
     actionRotateRight->setEnabled(updateTo);
     actionCrop->setEnabled(updateTo);
     actionSave->setEnabled(updateTo);
+    actionScale->setEnabled(updateTo);
 }
 
 void ImageViewerST::scaleImage(double factor)
@@ -215,4 +217,9 @@ void ImageViewerST::on_actionShowToolbar_triggered(bool checked)
         mainToolBar->show();
     else
         mainToolBar->hide();
+}
+
+void ImageViewerST::on_actionScale_triggered()
+{
+
 }
