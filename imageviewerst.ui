@@ -176,8 +176,15 @@
    <property name="checked">
     <bool>true</bool>
    </property>
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/new/prefix1/icons/toolbar.png</normaloff>:/new/prefix1/icons/toolbar.png</iconset>
+   </property>
    <property name="text">
     <string>Show Toolbar</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+T</string>
    </property>
   </action>
   <action name="actionScale">
@@ -191,6 +198,9 @@
    <property name="toolTip">
     <string>Scale Image</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+Z</string>
+   </property>
   </action>
   <action name="actionToggleFullscren">
    <property name="icon">
@@ -202,6 +212,9 @@
    </property>
    <property name="toolTip">
     <string>Show fullscren</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+F</string>
    </property>
   </action>
  </widget>

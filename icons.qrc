@@ -9,5 +9,6 @@
         <file>icons/save.png</file>
         <file>icons/resize.png</file>
         <file>icons/fullscreen.png</file>
+        <file>icons/toolbar.png</file>
     </qresource>
 </RCC>
