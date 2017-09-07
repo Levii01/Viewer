@@ -17,6 +17,8 @@ ImageViewerST::ImageViewerST(QWidget *parent) :
     actionShowToolbar = ui->actionShowToolbar;
     actionScale = ui->actionScale;
     actionToggleFullscren = ui->actionToggleFullscren;
+    actionUndo = ui->actionUndo;
+    actionRedo = ui->actionRedo;
 
     statusBar = ui->statusBar;
     mainToolBar = ui->mainToolBar;
@@ -62,6 +64,8 @@ void ImageViewerST::toggleActivityActions(bool updateTo)
     actionCrop->setEnabled(updateTo);
     actionSave->setEnabled(updateTo);
     actionScale->setEnabled(updateTo);
+    actionUndo->setEnabled(updateTo);
+    actionRedo->setEnabled(updateTo);
 }
 
 void ImageViewerST::scaleImage(double factor)
@@ -235,4 +239,14 @@ void ImageViewerST::on_actionToggleFullscren_triggered()
         this->showNormal();
     else
         this->setWindowState(Qt::WindowFullScreen);
+}
+
+void ImageViewerST::on_actionUndo_triggered()
+{
+
+}
+
+void ImageViewerST::on_actionRedo_triggered()
+{
+
 }

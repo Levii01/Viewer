@@ -9,3 +9,4 @@ http://www.iconsdb.com/caribbean-blue-icons/crop-icon.html
 http://www.iconsdb.com/caribbean-blue-icons/save-icon.html
 http://www.iconsdb.com/caribbean-blue-icons/fullscreen-11-icon.html
 http://www.iconsdb.com/caribbean-blue-icons/top-navigation-toolbar-icon.html
+http://www.iconsdb.com/caribbean-blue-icons/undo-3-icon.html

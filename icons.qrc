@@ -10,5 +10,7 @@
         <file>icons/resize.png</file>
         <file>icons/fullscreen.png</file>
         <file>icons/toolbar.png</file>
+        <file>icons/undo.png</file>
+        <file>icons/redo.png</file>
     </qresource>
 </RCC>
