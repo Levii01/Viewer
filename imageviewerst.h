@@ -11,6 +11,7 @@
 #include <QScrollBar>
 #include <QMouseEvent>
 #include <QStatusBar>
+#include <QInputDialog>
 
 namespace Ui {
 class ImageViewerST;

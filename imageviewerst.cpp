@@ -221,5 +221,9 @@ void ImageViewerST::on_actionShowToolbar_triggered(bool checked)
 
 void ImageViewerST::on_actionScale_triggered()
 {
-
+    QPixmap img(*imageLabel->pixmap());
+    int width = QInputDialog::getInt(this, "Scale image", "Set width", img.width(), 10, img.width()*100);
+    int height = QInputDialog::getInt(this, "Scale image", "Set height", img.height(), 10, img.height()*100);
+    imageLabel->setPixmap(img.scaled(width, height, Qt::IgnoreAspectRatio,Qt::SmoothTransformation));
+    imageLabel->adjustSize();
 }
