@@ -41,6 +41,7 @@
     </property>
     <addaction name="actionZoomIn"/>
     <addaction name="actionZoomOut"/>
+    <addaction name="actionToggleFullscren"/>
     <addaction name="actionShowToolbar"/>
    </widget>
    <widget class="QMenu" name="menuEdit">
@@ -189,6 +190,18 @@
    </property>
    <property name="toolTip">
     <string>Scale Image</string>
+   </property>
+  </action>
+  <action name="actionToggleFullscren">
+   <property name="icon">
+    <iconset resource="icons.qrc">
+     <normaloff>:/new/prefix1/icons/fullscreen.png</normaloff>:/new/prefix1/icons/fullscreen.png</iconset>
+   </property>
+   <property name="text">
+    <string>ToggleFullscren</string>
+   </property>
+   <property name="toolTip">
+    <string>Show fullscren</string>
    </property>
   </action>
  </widget>

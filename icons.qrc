@@ -8,5 +8,6 @@
         <file>icons/crop.png</file>
         <file>icons/save.png</file>
         <file>icons/resize.png</file>
+        <file>icons/fullscreen.png</file>
     </qresource>
 </RCC>

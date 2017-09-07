@@ -35,8 +35,8 @@ private slots:
     void on_actionCrop_triggered();
     void on_actionSave_triggered();
     void on_actionShowToolbar_triggered(bool checked);
-
     void on_actionScale_triggered();
+    void on_actionToggleFullscren_triggered();
 
 private:
     Ui::ImageViewerST *ui;
@@ -65,6 +65,7 @@ private:
     QAction *actionSave;
     QAction *actionShowToolbar;
     QAction *actionScale;
+    QAction *actionToggleFullscren;
 
     double scaleFactor;
     bool croppingImage;

@@ -16,6 +16,7 @@ ImageViewerST::ImageViewerST(QWidget *parent) :
     actionRotateRight = ui->actionRotateRight;
     actionShowToolbar = ui->actionShowToolbar;
     actionScale = ui->actionScale;
+    actionToggleFullscren = ui->actionToggleFullscren;
 
     statusBar = ui->statusBar;
     mainToolBar = ui->mainToolBar;
@@ -226,4 +227,12 @@ void ImageViewerST::on_actionScale_triggered()
     int height = QInputDialog::getInt(this, "Scale image", "Set height", img.height(), 10, img.height()*100);
     imageLabel->setPixmap(img.scaled(width, height, Qt::IgnoreAspectRatio,Qt::SmoothTransformation));
     imageLabel->adjustSize();
+}
+
+void ImageViewerST::on_actionToggleFullscren_triggered()
+{
+    if(isFullScreen())
+        this->showNormal();
+    else
+        this->setWindowState(Qt::WindowFullScreen);
 }
